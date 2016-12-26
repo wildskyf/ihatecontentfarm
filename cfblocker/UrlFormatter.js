@@ -1,20 +1,8 @@
-var url = require("url");
-
-export default class UrlFormatter {
+class UrlFormatter {
 
     static googleWebCache(site) {
         var u = site.replace(/^https?:?\/?\/?/,"");
-
-        var params = {
-            hostname: "webcache.googleusercontent.com",
-            protocol: "https",
-            pathname: "/search",
-            query: {
-                strip: 1
-            }
-        }
-
-        var result = url.format(params);
+        var result = "https://webcache.googleusercontent.com/search?strip=1";
 
         u = u.replace("?","%3F");
         u = u.replace("=","%3D");

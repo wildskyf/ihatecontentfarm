@@ -1,4 +1,3 @@
-
 function tr(selector,message) {
     $(selector).text(chrome.i18n.getMessage(message));
 }
@@ -15,8 +14,8 @@ function trFromTable(table) {
     }
 }
 
-module.exports = {
+var Utils = {
     tr: tr,
     hostname: hostname,
     trFromTable: trFromTable
-}
+};

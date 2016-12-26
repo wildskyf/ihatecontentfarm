@@ -1,6 +1,4 @@
-
-
-export default class Filter {
+class Filter {
 
     constructor() {
         this._Blacklist = [];

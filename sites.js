@@ -1,5 +1,4 @@
 /* Rules:
-
    1. Don't include "www" / "ww" prefix
    2. Don't sort the list. Maintainer will do it.
  */
@@ -194,5 +193,3 @@ var sites = [
     "zhoucuimei.cc",
     "zhulinlin.net",
 ];
-
-module.exports = sites;

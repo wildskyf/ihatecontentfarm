@@ -1,8 +1,3 @@
-var sites = require("./sites"),
-    Filter = require("cfblocker/Filter"),
-    ListFormatter = require("cfblocker/ListFormatter"),
-    LocalStorageStore = require("cfblocker/LocalStorageStore");
-
 function hostname(url) {
     var parser = document.createElement("a");
     parser.href = url;
@@ -51,28 +46,24 @@ function block(url) {
 
 function handle(tab) {
     if (block(tab.url)) {
-        chrome.tabs.update(tab.id,{ url: "stop.html?to=" + encodeURIComponent(tab.url)});
+        browser.tabs.update( tab.id, {
+            url: "stop.html?to=" + encodeURIComponent(tab.url)
+        });
     }
 }
 
-chrome.webRequest.onBeforeRequest.addListener(function(info) {
-    var cancel = false;
+browser.webRequest.onBeforeRequest.addListener(function(info) {
+        var cancel = false;
 
-    if (!LocalStorageStore.isWebRequestFilterBlocked ) {
-        cancel = block(info.url);
-    }
+        if (!LocalStorageStore.isWebRequestFilterBlocked ) {
+            cancel = block(info.url);
+        }
 
-    return {cancel: cancel};
+        if (cancel) {
+            handle(info);
+        }
 
-},{
-    urls: ["*://*/*"]
-},["blocking"]
+        return {cancel: cancel};
+    }, { urls: ["*://*/*"] }, ["blocking"]
 );
 
-chrome.tabs.onCreated.addListener(function(tab) {
-    handle(tab);
-});
-
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    handle(tab);
-});

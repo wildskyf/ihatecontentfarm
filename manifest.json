@@ -4,7 +4,14 @@
   "description": "__MSG_appDesc__",
   "manifest_version": 2,
   "background" : {
-  	"scripts" : ["background.js"]
+    "scripts" : [
+      "cfblocker/Filter.js",
+      "cfblocker/ListFormatter.js",
+      "cfblocker/LocalStorageStore.js",
+      "cfblocker/UrlFormatter.js",
+      "sites.js",
+      "background.js"
+    ]
   },
   "permissions": [ "tabs" ,"webRequest", "webRequestBlocking" , "http://*/", "https://*/"],
   "default_locale": "en",

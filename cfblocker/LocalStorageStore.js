@@ -1,6 +1,4 @@
 
-import ListFormatter from "./ListFormatter";
-
 //10 minus
 var threshold = 10 * 60 * 1000;
 
@@ -19,7 +17,7 @@ function _getArray(key) {
     return ret;
 }
 
-export default class LocalStorageStore {
+class LocalStorageStore {
 
     static get isWebRequestFilterBlocked() {
         var ret = false,

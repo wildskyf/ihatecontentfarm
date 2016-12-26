@@ -1,8 +1,3 @@
-var LocalStorageStore = require("cfblocker/LocalStorageStore"),
-    Utils = require("./utils"),
-    UrlFormatter = require("cfblocker/UrlFormatter");
-
-
 function decodeQuery() {
     var queryString = window.location.search.substring(1);
     var token = queryString.split("&");
@@ -20,7 +15,7 @@ function decodeQuery() {
 function unblockTemp(hostname) {
     var key = "tmpWhitelist";
 
-    var Whitelist
+    var Whitelist;
     try {
         Whitelist = JSON.parse(localStorage.getItem(key) || "");
     } catch (e) {

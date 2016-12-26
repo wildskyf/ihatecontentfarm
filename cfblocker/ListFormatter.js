@@ -1,6 +1,4 @@
-
-
-export default class ListFormatter {
+class ListFormatter {
 
     static parse(input) {
         if (!input) {
