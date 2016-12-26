@@ -1,0 +1,16 @@
+{
+  "name": "contentfarmblocker",
+  "version": "0.1.5",
+  "description": "To prevent click content farm mistakenly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wildskyf/ihatecontentfarms.git"
+  },
+  "keywords": [ "firefox", "content farm", "block" ],
+  "author": [ "Wildsky", "Ben Lau" ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/wildskyf/ihatecontentfarms/issues"
+  },
+  "homepage": "https://github.com/wildskyf/ihatecontentfarms"
+}
