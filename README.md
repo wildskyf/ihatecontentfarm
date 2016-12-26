@@ -2,6 +2,7 @@
 
 > 這個套件是由 [Ben Lau](https://github.com/benlau/) 開發於 chrome
 > 由 [wildsky](https://github.com/wildskyf) 移植到 firefox 上。
+> 原專案的原始碼可以來這邊看： https://github.com/benlau/ihatecontentfarms
 
 你今天震驚了嗎？有否為大量誇張失實的標題文章湧進日常生活而感到厭感？
 
