@@ -4,6 +4,9 @@
 > 由 [wildsky](https://github.com/wildskyf) 移植到 firefox 上。
 > 原專案的原始碼可以來這邊看： https://github.com/benlau/ihatecontentfarms
 
+![screenshot-zh_TW](icons/screenshot-zh_TW.png)
+
+
 你今天震驚了嗎？有否為大量誇張失實的標題文章湧進日常生活而感到厭感？
 
 即使告訢朋友不要再轉載有關文章，結果還是不會消失，最後只能進行消極的抵抗 —— 不點擊，不讓自己為對方的廣告收益帶來貢獻。
