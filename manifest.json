@@ -15,5 +15,7 @@
   },
   "permissions": [ "tabs" ,"webRequest", "webRequestBlocking" , "http://*/", "https://*/"],
   "default_locale": "en",
-  "options_page": "options.html"
+    "options_ui": {
+      "page": "options.html"
+    }
 }

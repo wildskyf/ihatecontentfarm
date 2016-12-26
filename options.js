@@ -1,9 +1,3 @@
-var sites = require("./sites"),
-    Filter = require("cfblocker/Filter"),
-    ListFormatter = require("cfblocker/ListFormatter"),
-    LocalStorageStore = require("cfblocker/LocalStorageStore"),
-    Utils = require("./utils");
-
 $(document).ready(() => {
     var submitButton = "#submitButton";
 

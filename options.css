@@ -1,9 +1,10 @@
-
 body {
-    background-color: #ffffff;
+    background-color: #FBFBFB;
     color: rgba(0,0,0,0.87);
     font-family: helvetica, arial, sans-serif;
     font-size: 18px;
+    padding: 10px;
+    border: 1px solid #C1C1C1;
 }
 
 .content {
@@ -85,25 +86,25 @@ h1,h2 {
 .submit {
     display: inline-block;
     text-decoration: none;
-    border: none;
-    background-color: rgb(81,45,168);
-    border-radius: 3px;
-    padding: 18px 24px;
-    color: white;
-    font-weight: bold;
+    border: 1px solid #C1C1C1;
+    background-color: #FBFBFB;
+    border-radius: 2px;
+    padding: 10px 14px;
+    color: #333333;
     font-size: 12px;
+    text-align: center;
     text-transform: uppercase;
-    -webkit-transition: background .1s linear;
     transition: background .1s linear;
+    width: 50px;
     float: right;
 }
 
 .submit:hover {
-    background-color: rgba(81,45,168,0.8);
+    background-color: #EBEBEB;
 }
 
 .submit.disabled {
-    background: #aaa;
+    //background: #;
 }
 
 .submit.disabled:hover {
