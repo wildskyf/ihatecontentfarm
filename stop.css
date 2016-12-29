@@ -66,3 +66,16 @@ a:hover {
     border-radius: 2px;
     border: 1px solid #fff;
 }
+
+
+@media screen and (max-width: 500px) {
+    body {
+        font-size: 14px;
+    }
+    .content {
+        padding: 0 10px;
+    }
+    .content img {
+        width: 60px;
+    }
+}

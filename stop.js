@@ -81,7 +81,8 @@ $(document).ready(function() {
         }
     });
 
+    var $document = $(document);
     var $content = $('.content');
-    var offsetY =  $(document).height()/2 - $content.height()/2 - 20;
+    var offsetY = $document.width() > 1000 ? ($document.height()/2 - $content.height()/2 - 20): 30;
     $content.css('top', offsetY);
 });
