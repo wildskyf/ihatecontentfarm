@@ -43,7 +43,7 @@ $(document).ready(function() {
     var to = decodeQuery();
     var hostname = Utils.hostname(to);
 
-    $("#warningText").text(chrome.i18n.getMessage("header") + " : " + hostname);
+    $("#warningText").text(browser.i18n.getMessage("header") + " : " + hostname);
 
     var trTable = {
         "#detailsLink" : "details",
@@ -52,7 +52,7 @@ $(document).ready(function() {
         "#back" : "backBtn",
         "#continue" : "contBtn",
         "#continueNoAds" : "contNoAdsBtn"
-    }
+    };
 
     Utils.trFromTable(trTable);
 
@@ -81,4 +81,7 @@ $(document).ready(function() {
         }
     });
 
+    var $content = $('.content');
+    var offsetY =  $(document).height()/2 - $content.height()/2 - 20;
+    $content.css('top', offsetY);
 });
