@@ -39,11 +39,10 @@ function unblockTemp(hostname) {
     LocalStorageStore.blockWebRequestFilter();
 }
 
-$(document).ready(function() {
+window.onload = () => {
     var to = decodeQuery();
     var hostname = Utils.hostname(to);
-
-    $("#warningText").text(browser.i18n.getMessage("header") + " : " + hostname);
+    document.querySelector("#warningText").textContent = escapeHTML(browser.i18n.getMessage("header") + " : " + hostname);
 
     var trTable = {
         "#detailsLink" : "details",
@@ -56,33 +55,33 @@ $(document).ready(function() {
 
     Utils.trFromTable(trTable);
 
-    $("#continue").click(function() {
+    document.querySelector("#continue").addEventListener('click', () => {
         unblockTemp(hostname);
         window.location.href = to;
     });
 
-    $("#continueNoAds").click(function() {
+    document.querySelector("#continueNoAds").addEventListener('click', () => {
         // Only disable web request so that it could load images.
         // In case user need to switch to full version in cache.
         LocalStorageStore.blockWebRequestFilter();
         window.location.href = UrlFormatter.googleWebCache(to);
     });
 
-    $("#back").click(function() {
-
+    document.querySelector("#back").addEventListener('click', () => {
         if (history.length <= 2) {
-            if (window.opener || window.parent) {
+            if (window.opener || window.parent)
                 window.close();
-            } else {
+            else
                 window.history.go(-1);
-            }
-        } else {
+        }
+        else {
             window.history.go(-2);
         }
     });
 
-    var $document = $(document);
-    var $content = $('.content');
-    var offsetY = $document.width() > 1000 ? ($document.height()/2 - $content.height()/2 - 20): 30;
-    $content.css('top', offsetY);
-});
+    var offsetY = document.body.clientWidth > 1000 ?
+        (document.body.clientHeight/2 - document.querySelector('.content').offsetHeight/2 - 20) :
+        30;
+    document.querySelector('.content').style.top = offsetY;
+};
+

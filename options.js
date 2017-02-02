@@ -1,6 +1,5 @@
-$(document).ready(() => {
+window.onload = () => {
     var submitButton = "#submitButton";
-
     var userBlacklistTextArea = "#userBlacklist textarea";
     var userWhitelistTextArea = "#userWhitelist textarea";
 
@@ -20,34 +19,34 @@ $(document).ready(() => {
 
     Utils.trFromTable(trTable);
 
-    function submit() {
-        $(submitButton).addClass("disabled");
-        Utils.tr(submitButton,"saved");
+    var submit = () => {
+        document.querySelector(submitButton).classList.add("disabled");
+        Utils.tr(submitButton, "saved");
 
-        LocalStorageStore.userBlacklist = ListFormatter.parse($(userBlacklistTextArea).val());
-        LocalStorageStore.userWhitelist = ListFormatter.parse($(userWhitelistTextArea).val());
+        LocalStorageStore.userBlacklist = ListFormatter.parse(document.querySelector(userBlacklistTextArea).value);
+        LocalStorageStore.userWhitelist = ListFormatter.parse(document.querySelector(userWhitelistTextArea).value);
     }
 
-    function enableButton() {
-        $(submitButton).removeClass("disabled");
-        Utils.tr(submitButton,"save");
-        $(submitButton).one("click", (e) => {
+    var enableButton = () => {
+        document.querySelector(submitButton).classList.remove("disabled");
+        Utils.tr(submitButton, "save");
+
+        document.querySelector(submitButton).addEventListener("click", e => {
             e.preventDefault();
             submit();
-        });
+        }, false);
     }
 
-    $("#systemBlacklist textarea").val(ListFormatter.stringify(sites));
+    document.querySelector("#systemBlacklist textarea").value = ListFormatter.stringify(sites);
 
-    $(userBlacklistTextArea).on("change keyup paste", enableButton);
+    addMultipleListeners(document.querySelector(userBlacklistTextArea), ['change', 'keyup', 'paste'], enableButton,false);
+    addMultipleListeners(document.querySelector(userWhitelistTextArea), ['change', 'keyup', 'paste'], enableButton,false);
 
-    $(userBlacklistTextArea).val(ListFormatter.stringify(LocalStorageStore.userBlacklist));
+    document.querySelector(userBlacklistTextArea).value = ListFormatter.stringify(LocalStorageStore.userBlacklist);
+    document.querySelector(userWhitelistTextArea).value = ListFormatter.stringify(LocalStorageStore.userWhitelist);
 
-    $(userWhitelistTextArea).on("change keyup paste", enableButton);
+    document.querySelector("#submitButton").addEventListener('click', () => {
+        document.querySelector("#submitButton").classList.add("disabled");
+    }, false);
+};
 
-    $(userWhitelistTextArea).val(ListFormatter.stringify(LocalStorageStore.userWhitelist));
-
-    $("#submitButton").click(function() {
-        $("#submitButton").addClass("disabled");
-    });
-});
