@@ -1,3 +1,15 @@
+// set default block way
+browser.storage.local.get().then( results => {
+    if ((typeof results.length === 'number') && (results.length > 0)) {
+        results = results[0];
+    }
+    if (results.blockRequest === undefined && results.blockLoading === undefined) {
+        browser.storage.local.set({
+            blockLoading: true
+        });
+    }
+});
+
 function hostname(url) {
     var parser = document.createElement("a");
     parser.href = url;
@@ -46,24 +58,52 @@ function block(url) {
 
 function handle(tab) {
     if (block(tab.url)) {
-        browser.tabs.update( tab.id, {
+        browser.tabs.update( tab.id || tab.tabId, {
             url: "stop.html?to=" + encodeURIComponent(tab.url)
         });
     }
 }
 
+browser.tabs.onUpdated.addListener(function(tabId, changeInfo, newTab){
+    browser.storage.local.get().then( results => {
+        if ((typeof results.length === 'number') && (results.length > 0)) {
+            results = results[0];
+        }
+
+        if (results.blockLoading) {
+            var cancel = false;
+
+            if (!LocalStorageStore.isWebRequestFilterBlocked ) {
+              cancel = block(changeInfo.url);
+            }
+
+            if (cancel) {
+                handle(changeInfo);
+            }
+        }
+    });
+});
+
 browser.webRequest.onBeforeRequest.addListener(function(info) {
-        var cancel = false;
-
-        if (!LocalStorageStore.isWebRequestFilterBlocked ) {
-            cancel = block(info.url);
+    browser.storage.local.get().then( results => {
+        if ((typeof results.length === 'number') && (results.length > 0)) {
+            results = results[0];
         }
 
-        if (cancel) {
-            handle(info);
-        }
+        if (results.blockRequest) {
+            var cancel = false;
 
-        return {cancel: cancel};
-    }, { urls: ["*://*/*"] }, ["blocking"]
-);
+            if (!LocalStorageStore.isWebRequestFilterBlocked ) {
+                cancel = block(info.url);
+            }
+
+            if (cancel) {
+                handle(info);
+            }
+
+            return {cancel: cancel};
+        }
+    });
+
+    }, { urls: ["*://*/*"] }, ["blocking"]);
 

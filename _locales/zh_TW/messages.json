@@ -47,6 +47,21 @@
         "description" : "Description of Blacklist Field for options"
     },
 
+    "blockLabel": {
+        "message": "封鎖方式",
+        "description": "Field Title for block options"
+    },
+
+    "blockRequestLabel": {
+        "message": "在發出請求時封鎖",
+        "description": "Field Label for block options"
+    },
+
+    "blockLoadingLabel": {
+        "message": "在載入時封鎖",
+        "description": "Field Label for block options"
+    },
+
     "userBlacklist": {
         "message": "用戶自定黑名單",
         "description": "Field Label for options"

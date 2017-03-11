@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "__MSG_appDesc__",
   "manifest_version": 2,
   "background" : {
@@ -13,7 +13,7 @@
       "background.js"
     ]
   },
-  "permissions": [ "tabs" ,"webRequest", "webRequestBlocking" , "http://*/", "https://*/"],
+  "permissions": [ "tabs" ,"webRequest", "webRequestBlocking" , "storage" , "http://*/", "https://*/"],
   "default_locale": "en",
     "options_ui": {
       "page": "options.html"

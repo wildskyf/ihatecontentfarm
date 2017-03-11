@@ -14,7 +14,20 @@
             <div class="subheader"><h1 id="appDescLabel"></h1></div>
 
             <div class="options">
-                <div id="systemBlacklist" class="field" >
+                <div class="field">
+                    <div class="fieldLabel">
+                        <h2 id="blockLabel"></h2>
+                        <span></span>
+                    </div>
+                    <div class="fieldSet">
+                        <label for="blockRequest" id="blockRequestLabel">Block Request</label>
+                        <input id="blockRequest" type="checkbox">
+                        <label for="blockLoading" id="blockLoadingLabel">Block Loading</label>
+                        <input id="blockLoading" type="checkbox">
+                    </div>
+                </div>
+
+                <div id="systemBlacklist" class="field">
                     <div class="fieldLabel">
                         <h2 id="systemBlacklistLabel"></h2>
                         <span id="systemBlacklistDescLabel">Default Blacklist(Read-only)</span>

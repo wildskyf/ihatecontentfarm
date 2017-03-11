@@ -46,6 +46,21 @@
         "description" : "Description of Blacklist Field for options"
     },
 
+    "blockLabel": {
+        "message": "Block Way",
+        "description": "Field Title for block options"
+    },
+
+    "blockRequestLabel": {
+        "message": "Block Request",
+        "description": "Field Label for block options"
+    },
+
+    "blockLoadingLabel": {
+        "message": "Block Loading",
+        "description": "Field Label for block options"
+    },
+
     "userBlacklist": {
         "message": "User Blacklist",
         "description": "Field Label for options"
