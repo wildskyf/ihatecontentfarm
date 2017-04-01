@@ -1,3 +1,7 @@
+var isDev = false;
+var handleTabId = null;
+var handleUrl = '';
+
 // set default block way
 browser.storage.local.get().then( results => {
     if ((typeof results.length === 'number') && (results.length > 0)) {
@@ -57,12 +61,33 @@ function block(url) {
 }
 
 function handle(tab) {
-    if (block(tab.url)) {
-        browser.tabs.update( tab.id || tab.tabId, {
+    if (!block(tab.url)) return;
+
+    var replacePage = () => {
+        if ((handleTabId || tab.id || tab.tabId) == false) return;
+
+        browser.tabs.update( handleTabId || tab.id || tab.tabId, {
             url: "stop.html?to=" + encodeURIComponent(tab.url)
         });
     }
+
+    if (handleTabId) {
+        browser.tabs.get(handleTabId).then( newtab => {
+            isDev && console.log(newtab.url)
+            isDev && console.log(tab.url);
+            if (newtab.url != tab.url) handleTabId = null;
+            replacePage();
+        });
+    }
+    else {
+        replacePage();
+    }
 }
+
+browser.tabs.onCreated.addListener(function(tab){
+    isDev && console.log('created!');
+    handleTabId = tab.id;
+});
 
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, newTab){
     browser.storage.local.get().then( results => {
@@ -73,12 +98,14 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, newTab){
         if (results.blockLoading) {
             var cancel = false;
 
-            if (!LocalStorageStore.isWebRequestFilterBlocked ) {
-              cancel = block(changeInfo.url);
+            if (!LocalStorageStore.isWebRequestFilterBlocked) {
+                if (!changeInfo.url || changeInfo.url == "about:blank") return;
+                cancel = block(changeInfo.url);
             }
 
             if (cancel) {
-                handle(changeInfo);
+                handleUrl = newTab.url;
+                handle(newTab);
             }
         }
     });
@@ -98,6 +125,7 @@ browser.webRequest.onBeforeRequest.addListener(function(info) {
             }
 
             if (cancel) {
+                handleUrl = info.url;
                 handle(info);
             }
 
