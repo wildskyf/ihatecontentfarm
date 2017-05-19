@@ -2,6 +2,14 @@ var isDev = false;
 var handleTabId = null;
 var handleUrl = '';
 
+const toJSON = response => response.json();
+
+fetch('https://rawgit.com/wildskyf/content-farm-list/master/list.json')
+    .then(toJSON)
+    .then(data => {
+        sites = data;
+    });
+
 // set default block way
 browser.storage.local.get().then( results => {
     if ((typeof results.length === 'number') && (results.length > 0)) {
