@@ -7,6 +7,7 @@ const toJSON = response => response.json();
 fetch('https://rawgit.com/wildskyf/content-farm-list/master/list.json')
     .then(toJSON)
     .then(data => {
+        if (!Array.isArray(data) || data.length === 0) return;
         sites = data;
     });
 
