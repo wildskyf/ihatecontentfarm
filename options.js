@@ -46,7 +46,15 @@ window.onload = () => {
         }, false);
     }
 
-    document.querySelector("#systemBlacklist textarea").value = ListFormatter.stringify(sites);
+    const toJSON = response => response.json();
+    fetch('https://rawgit.com/wildskyf/content-farm-list/master/list.json')
+        .then(toJSON)
+        .then(online_data => {
+            if (Array.isArray(online_data) && online_data.length !== 0) sites = online_data;
+            document.querySelector("#systemBlacklist textarea").value = ListFormatter.stringify(sites);
+        }).catch(error => {
+            document.querySelector("#systemBlacklist textarea").value = ListFormatter.stringify(sites);
+        });
 
     addMultipleListeners(document.querySelector(blockRequest), ['change', 'click'], enableButton,false);
     addMultipleListeners(document.querySelector(blockLoading), ['change', 'click'], enableButton,false);
