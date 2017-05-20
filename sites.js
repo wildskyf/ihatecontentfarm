@@ -3,7 +3,7 @@
    2. Don't sort the list. Maintainer will do it.
  */
 
-var internal_list = [
+var sites = [
     "7jiu.com.hk",
     "a-gui.com",
     "apple01.net",
