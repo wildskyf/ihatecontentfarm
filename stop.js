@@ -42,7 +42,7 @@ function unblockTemp(hostname) {
 window.onload = () => {
     var to = decodeQuery();
     var hostname = Utils.hostname(to);
-    document.querySelector("#warningText").textContent = escapeHTML(browser.i18n.getMessage("header") + " : " + hostname);
+    document.querySelector("#warningText").textContent = browser.i18n.getMessage("header") + " : " + hostname;
 
     var trTable = {
         "#detailsLink" : "details",
