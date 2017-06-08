@@ -191,5 +191,6 @@ var sites = [
     "youthwant.xnnow.com",
     "zhentoo.com",
     "zhoucuimei.cc",
-    "zhulinlin.net"
+    "zhulinlin.net",
+    "taiwanfansclub.com"
 ];
