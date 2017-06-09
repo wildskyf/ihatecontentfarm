@@ -2,7 +2,7 @@
 
 > 這個套件是由 [Ben Lau](https://github.com/benlau/) 開發於 chrome
 > 由 [wildsky](https://github.com/wildskyf) 移植到 firefox 上。
-> 原專案的原始碼可以來這邊看： https://github.com/benlau/ihatecontentfarms
+> 原專案在此： https://github.com/benlau/ihatecontentfarms
 
 ![screenshot-zh_TW](icons/screenshot-zh_TW.png)
 
@@ -27,3 +27,10 @@
  
  3. 自定黑名單及白名單
 
+
+## 新的內容農場
+
+內容農場永無止盡，歡迎大家提供需要被阻擋的列表。
+但因為 Mozilla 需要審核的關係，在這個 repo 的列表可能不會立即更新到線上去。
+所以請想提供新農場的人移駕到 https://github.com/wildskyf/content-farm-list ，
+該 repo 所產生的 json 會被線上的 add-on 直接引用，就不用再經過 Mozilla 的審核了。
